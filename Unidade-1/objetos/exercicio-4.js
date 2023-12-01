@@ -29,4 +29,4 @@ for( let produto of cartao.produtosConsumidos){
      totalConta += produto.precoUnitario * produto.quantidade;
 }
 
-console.log(`Ola, ${cartao.nomeDoCliente} a sua fatura chegou, o valor total a ser pago é de: ${totalConta.toFixed(2)}`);
+console.log(`Ola, ${cartao.nomeDoCliente} a sua fatura chegou, o valor total a ser pago é de: ${totalConta.toFixed(2 )}`);
