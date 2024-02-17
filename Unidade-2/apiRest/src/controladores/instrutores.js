@@ -39,12 +39,40 @@ const cadastrarInstrutores = (req, res) => {
      instrutores.push(instrutor);
 
      return res.status(201).json(instrutor)
-}
+};
+
+const atualizarinstrutor = (req, res) => {
+    const {id} = req.params;
+    const {nome , email, status } = req.body;
+
+    if(!nome){
+        return res.status(400).json({message: 'O nome é obrigatorio'})
+     };
+
+     if(!email){
+        return res.status(400).json({message: 'O email é obrigatorio'})
+     };
+
+     const instrutorSelecionado = instrutores.find((instrutor) => {
+        return instrutor.id === Number(id);
+    });
+
+    if(!instrutorSelecionado){
+        return res.status(404).json({message: "Instrutor nao encontrado"})
+    };
+
+    instrutorSelecionado.nome = nome;
+    instrutorSelecionado.email = email;
+    instrutorSelecionado.nome = status;
+
+    return res.status(203).send();
+};
 
 module.exports = {
     listarIntrutores,
     obterInstrutor,
     cadastrarInstrutores,
+    atualizarinstrutor,
 }
 
 
